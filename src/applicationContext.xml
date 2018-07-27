@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
+    <!-- 通过构造方法注入的方式为好友类注入值 -->
+    <bean id="frd" class="com.xgl.vo.Friend">
+    	<constructor-arg index="0" value="浠浠"></constructor-arg>
+    	<constructor-arg index="1" value="女"></constructor-arg>
+    	<constructor-arg index="2" value="21"></constructor-arg>
+    	<constructor-arg index="3">
+    		<list>
+    			<value>吃饭饭</value>
+    			<value>睡觉觉</value>
+    			<value>打豆豆</value>
+    		</list>
+    	</constructor-arg>
+    </bean>
+    
+    <!-- 通过属性注入的方式为好友类注入值 -->
+    <bean id="frd2" class="com.xgl.vo.Friend" scope="prototype">
+    	<property name="fname" value="颖颖"></property>
+    	<property name="sex" value="女"></property>
+    	<property name="age" value="20"></property>
+    	<property name="aihao">
+    		<list>
+    			<value>跳舞</value>
+    			<value>唱歌</value>
+    			<value>逛街</value>
+    		</list>
+    	</property>
+    </bean>
+    
+    <bean id="frd3" class="com.xgl.vo.Party" scope="prototype">
+    	<property name="fds">
+    		<list>
+    			<ref bean="frd"/>
+    			<ref bean="frd2"/>
+    		</list>
+    	</property>
+    
+    </bean>
+    
+    
+    
+</beans>
+
+
+
+
+
+
+
